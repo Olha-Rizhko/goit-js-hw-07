@@ -19,15 +19,18 @@ createButton.addEventListener('click', () => {
 
   destroyBoxes();
 
+  const fragment = document.createDocumentFragment(); // Створюємо фрагмент
+
   for (let i = 0; i < amount; i++) {
     const box = document.createElement('div');
     box.classList.add('box');
     box.style.backgroundColor = getRandomHexColor();
     box.style.width = `${30 + i * 10}px`;
     box.style.height = `${30 + i * 10}px`;
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box); // Додаємо елемент до фрагмента замість додавання безпосередньо до DOM
   }
 
+  boxesContainer.appendChild(fragment); // Додаємо фрагмент до DOM
   input.value = '';
 });
 
